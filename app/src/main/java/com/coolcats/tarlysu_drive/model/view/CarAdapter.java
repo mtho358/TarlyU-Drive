@@ -48,6 +48,13 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         holder.binding.licenseTagTextview.setText(car.getLicenseTag());
         holder.binding.priceTextview.setText("$" +car.getPricePerDay());
 
+        if(car.isAvailable() == true)
+                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#03BFAE"));
+        else
+                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#0F30E0E"));
+
+
+
         holder.itemView.setOnClickListener(view -> {
             if(car.isAvailable() == true) {
                 car.setAvailable(false);
