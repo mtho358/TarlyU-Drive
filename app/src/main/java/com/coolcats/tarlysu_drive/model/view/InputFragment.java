@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.coolcats.tarlysu_drive.MainActivity;
 import com.coolcats.tarlysu_drive.databinding.InputFragmentBinding;
 import com.coolcats.tarlysu_drive.model.data.Car;
 
@@ -41,11 +43,14 @@ public class InputFragment extends Fragment {
             String licenseTag = binding.licenseTagEditview.getText().toString().trim();
 
             Car newCar = new Car(name, licenseTag, price, true);
-            carDelegate.insertCar(newCar);
 
-            binding.nameEdittext.setText("");
-            binding.licenseTagEditview.setText("");
-            binding.priceEdittext.setText("");
+            if(newCar.getName() != null || newCar.getPricePerDay() !=  0.0 || newCar.getLicenseTag() != null) {
+                carDelegate.insertCar(newCar);
+
+                binding.nameEdittext.setText("");
+                binding.licenseTagEditview.setText("");
+                binding.priceEdittext.setText("");
+            }
         });
     }
 
