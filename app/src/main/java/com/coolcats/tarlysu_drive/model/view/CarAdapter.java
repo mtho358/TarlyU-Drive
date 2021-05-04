@@ -21,6 +21,8 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     private CarUpdateDelegate carUpdate;
 
+    private CarItemLayoutBinding binding;
+
     public CarAdapter(List<Car> cars, CarUpdateDelegate carUpdate) {
         this.cars = cars;
         this.carUpdate = carUpdate;
