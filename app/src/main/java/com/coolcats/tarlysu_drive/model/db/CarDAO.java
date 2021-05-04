@@ -23,9 +23,9 @@ public interface CarDAO {
     void insertCars(Car... car);
 
     @Update
-    void updateCar(Car car);
+    void updateCar(Car... car);
 
     @Delete
-    void deleteCar(Car car);
+    void deleteCar(Car... car);
 
 }

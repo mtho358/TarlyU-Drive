@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements InputFragment.Car
             @Override
             public void run() {
                 super.run();
+
                 Log.d("TAG_M", "Updating availablility");
                 TUDDatabase.getDatabase(MainActivity.this).getDAO().updateCar(car);
                 Log.d("TAG_M", "reading all...");

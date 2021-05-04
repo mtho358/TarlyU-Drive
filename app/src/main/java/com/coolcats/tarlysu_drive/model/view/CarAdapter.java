@@ -19,13 +19,19 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
 
     private List<Car> cars;
 
-    public CarAdapter(List<Car> cars){
+    private CarUpdateDelegate carUpdate;
+
+    public CarAdapter(List<Car> cars, CarUpdateDelegate carUpdate) {
         this.cars = cars;
+        this.carUpdate = carUpdate;
     }
 
     private View.OnClickListener onItemClickListener;
 
-    private InputFragment.CarDelegate carDelegate;
+
+    interface CarUpdateDelegate{
+        void updateAvailability(Car car);
+    }
 
     @NonNull
     @Override
@@ -48,15 +54,15 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         holder.binding.licenseTagTextview.setText(car.getLicenseTag());
         holder.binding.priceTextview.setText("$" +car.getPricePerDay());
 
-        if(car.isAvailable() == true)
+        if(car.isAvailable())
                 holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#03BFAE"));
         else
-                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#0F30E0E"));
+                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#F30E0E"));
 
 
 
         holder.itemView.setOnClickListener(view -> {
-            if(car.isAvailable() == true) {
+            if(car.isAvailable()) {
                 car.setAvailable(false);
                 Log.d("TAG_M", "" + car.isAvailable());
                 holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#F30E0E"));
@@ -65,6 +71,10 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
                 Log.d("TAG_M", "" + car.isAvailable());
                 holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#03BFAE"));
             }
+            Log.d("TAG_M", "Updating car");
+            Log.d("TAG_M", car.getName() + " is " + car.isAvailable());
+
+           carUpdate.updateAvailability(car);
         });
     }
 
