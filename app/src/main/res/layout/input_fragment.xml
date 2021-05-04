@@ -47,8 +47,8 @@
             android:id="@+id/insert_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:text="Insert"
+            android:background="@color/teal_500"
             app:layout_constraintTop_toBottomOf="@id/license_tag_editview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
