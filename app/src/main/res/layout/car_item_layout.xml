@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="16dp"
-    app:cardBackgroundColor="#4CAF50">
+    android:layout_margin="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_constraintlayput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:background="@drawable/available_true_bc">
 
         <TextView
             android:id="@+id/id_textview"

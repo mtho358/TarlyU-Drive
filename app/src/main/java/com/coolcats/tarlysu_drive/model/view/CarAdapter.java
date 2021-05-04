@@ -1,5 +1,6 @@
 package com.coolcats.tarlysu_drive.model.view;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.coolcats.tarlysu_drive.R;
 import com.coolcats.tarlysu_drive.databinding.CarItemLayoutBinding;
 import com.coolcats.tarlysu_drive.model.data.Car;
 
@@ -50,9 +52,11 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             if(car.isAvailable() == true) {
                 car.setAvailable(false);
                 Log.d("TAG_M", "" + car.isAvailable());
+                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#F30E0E"));
             }else{
                 car.setAvailable(true);
                 Log.d("TAG_M", "" + car.isAvailable());
+                holder.binding.itemConstraintlayput.setBackgroundColor(Color.parseColor("#03BFAE"));
             }
         });
     }
